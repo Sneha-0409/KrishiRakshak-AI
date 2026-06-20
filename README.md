@@ -1,2 +1,2 @@
 # KrishiRakshak-AI
-It's an app designed to predict diseases in farmers.
+It's an app designed to early predict diseases in farmers.
