@@ -115,4 +115,4 @@ KrishiRakshak AI bridges the gap between farmers and expert agricultural knowled
 ## 👩‍💻 Developed By
 
 **Sneha**  
-B.Tech Computer Science & Design
+B.Tech Computer Science
