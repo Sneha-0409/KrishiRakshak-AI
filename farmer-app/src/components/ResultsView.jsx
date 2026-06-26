@@ -6,7 +6,7 @@ export default function ResultsView({ result, language }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const texts = {
-    English: {
+    en: {
       predictionTitle: "Disease Prediction",
       detected: "Detected",
       confidence: "Confidence",
@@ -19,7 +19,7 @@ export default function ResultsView({ result, language }) {
       listen: "Listen to Advice",
       stopListen: "Stop Listening"
     },
-    Hindi: {
+    hi: {
       predictionTitle: "रोग की भविष्यवाणी",
       detected: "पहचानी गई बीमारी",
       confidence: "आत्मविश्वास",
@@ -34,7 +34,7 @@ export default function ResultsView({ result, language }) {
     }
   };
 
-  const t = texts[language] || texts.English;
+  const t = texts[language] || texts.en;
   const severityClass = recommendation.severity?.toLowerCase() || 'low';
 
   const friendlyName = prediction.disease.replace(/___/g, " ").replace(/_/g, " ");
@@ -70,7 +70,7 @@ export default function ResultsView({ result, language }) {
           <div>
             <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>{t.detected}</p>
             <h3 style={{ fontSize: '1.25rem', color: 'var(--color-primary-dark)', textTransform: 'capitalize' }}>
-              {friendlyName}
+              {recommendation.disease_name || friendlyName}
             </h3>
           </div>
           <div style={{ textAlign: 'right' }}>
