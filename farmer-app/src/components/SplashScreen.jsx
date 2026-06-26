@@ -19,8 +19,8 @@ export default function SplashScreen({ onComplete }) {
 
   return (
     <div className="splash-screen">
-      <div className="splash-logo">
-        <Leaf size={56} strokeWidth={2.5} />
+      <div className="splash-logo" style={{ overflow: 'hidden', padding: '8px', background: 'white', width: '150px', height: '150px', borderRadius: '50%' }}>
+        <img src="/logo.png" alt="KrishiRakshak Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
       </div>
       <h1 className="splash-title">KrishiRakshak AI</h1>
       <p className="splash-subtitle">Smart Farming, Better Yields</p>

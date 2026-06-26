@@ -78,7 +78,7 @@ function App() {
                 </button>
               )}
               <div className="header-title">
-                <Leaf fill="currentColor" />
+                <img src="/logo.png" alt="Logo" style={{ width: 44, height: 44, objectFit: 'contain', borderRadius: '50%', background: 'white', padding: '4px' }} />
                 <span style={{ fontWeight: 700 }}>KrishiRakshak AI</span>
               </div>
             </div>
