@@ -1,0 +1,16 @@
+tensorflow==2.16.1
+opencv-python
+numpy
+matplotlib
+pandas
+scikit-learn
+pillow
+fastapi
+uvicorn
+python-multipart
+streamlit
+google-genai
+sqlalchemy
+python-dotenv
+tqdm
+requests
