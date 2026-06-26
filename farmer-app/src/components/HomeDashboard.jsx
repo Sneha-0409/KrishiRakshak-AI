@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, Sun, CloudRain, Droplets, ThermometerSun, Scan } from 'lucide-react';
+import { Camera, Sun, CloudRain, Droplets, ThermometerSun, Scan, Sprout } from 'lucide-react';
 
 export default function HomeDashboard({ language, onNavigate }) {
   const isHindi = language === 'hi';
@@ -12,6 +12,8 @@ export default function HomeDashboard({ language, onNavigate }) {
     scanCrop: isHindi ? 'फसल की बीमारी स्कैन करें' : 'Scan Crop Disease',
     scanLivestock: isHindi ? 'पशुओं की बीमारी स्कैन करें' : 'Scan Livestock Disease',
     comingSoon: isHindi ? '(जल्द आ रहा है)' : '(Coming Soon)',
+    sowingGuide: isHindi ? 'अब क्या बोएं?' : 'What to Sow Now?',
+    sowingSubtitle: isHindi ? 'मौसम के अनुसार फसल सुझाव' : 'Seasonal crop suggestions',
     tipsTitle: isHindi ? 'आज के कृषि सुझाव' : 'Farming Tips of the Day',
     tip1: isHindi ? 'गर्मी में अपनी फसलों में नियमित रूप से पानी दें, सुबह का समय सबसे अच्छा है।' : 'Water your crops regularly during summer, early mornings are best.',
     tip2: isHindi ? 'कीटों से बचाव के लिए जैविक कीटनाशकों का प्रयोग करें।' : 'Use organic pesticides to prevent pest infestations.',
@@ -53,13 +55,17 @@ export default function HomeDashboard({ language, onNavigate }) {
             </div>
           </button>
 
-          <button className="action-card action-card-secondary" style={{ opacity: 0.7, cursor: 'not-allowed' }}>
-            <div className="action-card-icon">
-              <Camera size={24} />
+          <button 
+            className="action-card action-card-secondary" 
+            onClick={() => onNavigate('sowing')}
+            style={{ borderLeft: '4px solid var(--color-primary)' }}
+          >
+            <div className="action-card-icon" style={{ background: 'var(--color-primary-light)', color: 'var(--color-primary-dark)' }}>
+              <Sprout size={24} />
             </div>
             <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: '1.125rem', fontWeight: 'bold' }}>{t.scanLivestock}</div>
-              <div style={{ fontSize: '0.875rem' }}>{t.comingSoon}</div>
+              <div style={{ fontSize: '1.125rem', fontWeight: 'bold' }}>{t.sowingGuide}</div>
+              <div style={{ fontSize: '0.875rem' }}>{t.sowingSubtitle}</div>
             </div>
           </button>
 

@@ -3,6 +3,7 @@ import CameraCapture from './components/CameraCapture';
 import ResultsView from './components/ResultsView';
 import SplashScreen from './components/SplashScreen';
 import HomeDashboard from './components/HomeDashboard';
+import SowingGuide from './components/SowingGuide';
 import { Leaf, RefreshCcw, Home, Compass, User, ArrowLeft } from 'lucide-react';
 
 function App() {
@@ -72,7 +73,7 @@ function App() {
         <>
           <header className="app-header">
             <div className="header-left">
-              {(currentScreen === 'scanner' || currentScreen === 'results') && (
+              {(currentScreen === 'scanner' || currentScreen === 'results' || currentScreen === 'sowing') && (
                 <button className="back-button" onClick={goHome}>
                   <ArrowLeft size={24} />
                 </button>
@@ -89,6 +90,10 @@ function App() {
 
           {currentScreen === 'home' && (
             <HomeDashboard language={language} onNavigate={setCurrentScreen} />
+          )}
+
+          {currentScreen === 'sowing' && (
+            <SowingGuide language={language} />
           )}
 
           {(currentScreen === 'scanner' || currentScreen === 'results') && (

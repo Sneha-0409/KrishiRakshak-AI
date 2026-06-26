@@ -89,8 +89,6 @@ export default function ResultsView({ result, language }) {
         <Volume2 size={20} />
         {isPlaying ? t.stopListen : t.listen}
       </button>
-
-      {/* Description & Severity */}
       <div className="glass-card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h2 className="section-title" style={{ margin: 0 }}>

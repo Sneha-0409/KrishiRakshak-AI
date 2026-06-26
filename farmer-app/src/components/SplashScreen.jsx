@@ -5,12 +5,10 @@ export default function SplashScreen({ onComplete }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // The CSS animation takes 2.5s for fadeOut. 
-    // We remove it from the DOM slightly after that to let the animation finish.
     const timer = setTimeout(() => {
       setVisible(false);
       onComplete();
-    }, 3000); 
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
