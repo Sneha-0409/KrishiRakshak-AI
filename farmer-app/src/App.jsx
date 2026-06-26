@@ -4,6 +4,7 @@ import ResultsView from './components/ResultsView';
 import SplashScreen from './components/SplashScreen';
 import HomeDashboard from './components/HomeDashboard';
 import SowingGuide from './components/SowingGuide';
+import ExplorePage from './components/ExplorePage';
 import { Leaf, RefreshCcw, Home, Compass, User, ArrowLeft } from 'lucide-react';
 
 function App() {
@@ -71,29 +72,35 @@ function App() {
 
       {currentScreen !== 'splash' && (
         <>
-          <header className="app-header">
-            <div className="header-left">
-              {(currentScreen === 'scanner' || currentScreen === 'results' || currentScreen === 'sowing') && (
-                <button className="back-button" onClick={goHome}>
-                  <ArrowLeft size={24} />
-                </button>
-              )}
-              <div className="header-title">
-                <img src="/logo.png" alt="Logo" style={{ width: 44, height: 44, objectFit: 'contain', borderRadius: '50%', background: 'white', padding: '4px' }} />
-                <span style={{ fontWeight: 700 }}>KrishiRakshak AI</span>
+          {currentScreen !== 'home' && (
+            <header className="app-header">
+              <div className="header-left">
+                {(currentScreen === 'scanner' || currentScreen === 'results' || currentScreen === 'sowing' || currentScreen === 'explore') && (
+                  <button className="back-button" onClick={goHome}>
+                    <ArrowLeft size={24} />
+                  </button>
+                )}
+                <div className="header-title">
+                  <img src="/logo.png" alt="Logo" style={{ width: 44, height: 44, objectFit: 'contain', borderRadius: '50%', background: 'white', padding: '4px' }} />
+                  <span style={{ fontWeight: 700 }}>KrishiRakshak AI</span>
+                </div>
               </div>
-            </div>
-            <button onClick={toggleLanguage} className="lang-toggle">
-              {language === 'en' ? 'हिंदी' : 'English'}
-            </button>
-          </header>
+              <button onClick={toggleLanguage} className="lang-toggle">
+                {language === 'en' ? 'हिंदी' : 'English'}
+              </button>
+            </header>
+          )}
 
           {currentScreen === 'home' && (
-            <HomeDashboard language={language} onNavigate={setCurrentScreen} />
+            <HomeDashboard language={language} onNavigate={setCurrentScreen} toggleLanguage={toggleLanguage} />
           )}
 
           {currentScreen === 'sowing' && (
             <SowingGuide language={language} />
+          )}
+
+          {currentScreen === 'explore' && (
+            <ExplorePage language={language} />
           )}
 
           {(currentScreen === 'scanner' || currentScreen === 'results') && (
@@ -143,9 +150,9 @@ function App() {
                 <Home size={24} />
                 <span>{language === 'hi' ? 'होम' : 'Home'}</span>
               </div>
-              <div className="nav-item" style={{ cursor: 'pointer', opacity: 0.5 }}>
+              <div className={`nav-item ${currentScreen === 'explore' ? 'active' : ''}`} onClick={() => setCurrentScreen('explore')} style={{ cursor: 'pointer' }}>
                 <Compass size={24} />
-                <span>{language === 'hi' ? 'खोजें' : 'Explore'}</span>
+                <span>{language === 'hi' ? 'मंडी भाव' : 'Mandi'}</span>
               </div>
               <div className="nav-item" style={{ cursor: 'pointer', opacity: 0.5 }}>
                 <User size={24} />

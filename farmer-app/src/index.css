@@ -451,3 +451,15 @@ button:active {
 .nav-item.active {
   color: var(--color-primary);
 }
+
+/* Scanner Animation */
+.scan-line {
+  animation: scan 2s linear infinite alternate;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(98px); opacity: 0; }
+}
