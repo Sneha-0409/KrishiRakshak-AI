@@ -48,11 +48,11 @@ Designed specifically for rural usability, the app features a Progressive Web Ap
 ```mermaid
 graph TD
     A[Farmer Mobile App / PWA] -->|1. Image or Voice Upload| B(FastAPI Backend)
-    B -->|2. Image Inference| C{TensorFlow Model}
+    B -->|2. Image Inference| C{TensorFlow (MobileNetV2) Disease Detection Model}
     C -->|3. Disease Class| B
-    B -->|4. Disease Name + Language| D{Google Gemini API}
+    B -->|4. Disease Name + Language| D{Gemini 2.5 Flash (Treatment Recommendation Engine)}
     D -->|5. Treatments & Advice| B
-    B -->|6. JSON Response| A
+    B -->|6. Prediction + AI Recommendation (JSON)| A
     A -->|7. Text-to-Speech Output| E[Farmer]
 ```
 
