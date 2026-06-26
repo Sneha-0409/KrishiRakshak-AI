@@ -16,6 +16,7 @@ function App() {
   const [exploreTab, setExploreTab] = useState('mandi');
   const [language, setLanguage] = useState('en');
   const [image, setImage] = useState(null);
+  const [voiceQuery, setVoiceQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
@@ -59,8 +60,44 @@ function App() {
     }
   };
 
+  const handleVoiceQuery = (transcript) => {
+    // Simple validation for prototype
+    if (transcript.trim().length < 10 || transcript.toLowerCase().includes('hello')) {
+      alert(language === 'hi' ? 'क्षमा करें, मुझे समझ नहीं आया। कृपया अपनी फसल की बीमारी या लक्षण के बारे में विस्तार से बताएं।' : "Sorry, I didn't quite catch that. Please describe your crop's disease or symptoms in more detail.");
+      return;
+    }
+
+    setVoiceQuery(transcript);
+    setImage(null);
+    setLoading(true);
+    setError(null);
+    setResult(null);
+    setCurrentScreen('results');
+
+    // Mock API response for prototype
+    setTimeout(() => {
+      setResult({
+        prediction: {
+          disease: "Potato___Early_blight",
+          confidence: 94.5
+        },
+        recommendation: {
+          disease_name: "Potato Early Blight",
+          severity: "High",
+          description: language === 'hi' ? "आपके विवरण के आधार पर, यह अर्ली ब्लाइट (अगेती झुलसा) लगता है। यह पत्तियों पर काले धब्बे पैदा करने वाली एक आम बीमारी है।" : "Based on your description, this sounds like Early Blight. It is a common fungal disease causing dark spots on leaves.",
+          symptoms: [transcript, language === 'hi' ? "पुरानी पत्तियों पर काले घेरे" : "Dark concentric rings on older leaves", language === 'hi' ? "पत्तियों का पीला पड़ना" : "Yellowing of leaves"],
+          organic_treatment: [language === 'hi' ? "संक्रमित पत्तियों को हटा दें" : "Remove infected leaves", language === 'hi' ? "कॉपर युक्त फफूंदनाशक का प्रयोग करें" : "Apply copper-based fungicide", language === 'hi' ? "हवा का अच्छा प्रवाह सुनिश्चित करें" : "Ensure good airflow"],
+          chemical_treatment: ["Chlorothalonil", "Mancozeb"],
+          prevention: [language === 'hi' ? "फसल चक्रण" : "Crop rotation", language === 'hi' ? "ऊपर से पानी देने से बचें" : "Avoid overhead watering", language === 'hi' ? "प्रतिरोधी किस्में लगाएं" : "Plant resistant varieties"]
+        }
+      });
+      setLoading(false);
+    }, 2000);
+  };
+
   const resetApp = () => {
     setImage(null);
+    setVoiceQuery('');
     setResult(null);
     setError(null);
     setCurrentScreen('scanner');
@@ -68,6 +105,7 @@ function App() {
 
   const goHome = () => {
     setImage(null);
+    setVoiceQuery('');
     setResult(null);
     setError(null);
     setCurrentScreen('home');
@@ -133,12 +171,24 @@ function App() {
           {(currentScreen === 'scanner' || currentScreen === 'results') && (
             <main className="main-content">
               {currentScreen === 'scanner' && (
-                <CameraCapture onImageSelected={handleImageSelect} language={language} />
+                <CameraCapture onImageSelected={handleImageSelect} onVoiceQuery={handleVoiceQuery} language={language} />
               )}
               
               {currentScreen === 'results' && image && (
                 <div className="glass-card" style={{ padding: '8px' }}>
-                  <img src={image} alt="Captured leaf" className="image-preview" />
+                  <img src={image} alt="Crop" style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '16px' }} />
+                </div>
+              )}
+
+              {currentScreen === 'results' && voiceQuery && !image && (
+                <div className="glass-card fade-in" style={{ background: '#eff6ff', border: '1px solid #bfdbfe' }}>
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ background: '#2563eb', padding: '8px', borderRadius: '50%' }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    </div>
+                    <h3 style={{ margin: 0, color: '#1e3a8a' }}>{language === 'hi' ? 'आपकी आवाज क्वेरी' : 'Your Voice Query'}</h3>
+                  </div>
+                  <p style={{ margin: 0, fontStyle: 'italic', color: '#334155', fontSize: '1.1rem' }}>"{voiceQuery}"</p>
                 </div>
               )}
 
