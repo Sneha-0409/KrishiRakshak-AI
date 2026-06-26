@@ -16,7 +16,7 @@ export default function CameraCapture({ onImageSelected, language }) {
       subtitle: "Capture your plant's leaf clearly to detect diseases",
       openCamera: "Open Camera",
       uploadGallery: "Choose from Gallery",
-      supportedNote: "*Currently supporting disease detection for Tomato and Potato only.",
+      supportedNote: <span>*Currently supporting disease detection for <strong style={{ color: '#d84315', fontWeight: 800 }}>Tomato and Potato</strong> only.</span>,
       instTitle: "How to take a good photo",
       inst1Title: "Good Lighting",
       inst1: "Ensure the leaf is well-lit and in focus.",
@@ -30,7 +30,7 @@ export default function CameraCapture({ onImageSelected, language }) {
       subtitle: "बीमारी का पता लगाने के लिए पौधे की पत्ती की साफ फोटो लें",
       openCamera: "कैमरा खोलें",
       uploadGallery: "गैलरी से चुनें",
-      supportedNote: "*वर्तमान में केवल टमाटर और आलू के लिए रोग का पता लगाने का समर्थन करता है।",
+      supportedNote: <span>*वर्तमान में केवल <strong style={{ color: '#d84315', fontWeight: 800 }}>टमाटर और आलू</strong> के लिए रोग का पता लगाने का समर्थन करता है।</span>,
       instTitle: "एक अच्छी तस्वीर कैसे लें",
       inst1Title: "अच्छी रोशनी",
       inst1: "सुनिश्चित करें कि पत्ती पर अच्छी रोशनी हो और वह फोकस में हो।",
@@ -67,8 +67,21 @@ export default function CameraCapture({ onImageSelected, language }) {
           </div>
         </div>
 
-        <div style={{ marginTop: '16px', fontSize: '0.85rem', color: '#f57c00', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px', background: '#fff8e1', padding: '10px 12px', borderRadius: '8px' }}>
-          <span>⚠️</span> {t.supportedNote}
+        <div style={{ 
+          marginTop: '20px', 
+          fontSize: '0.9rem', 
+          color: '#e65100', 
+          fontWeight: 500, 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '12px', 
+          background: '#fff3e0', 
+          padding: '12px 16px', 
+          borderRadius: '12px',
+          border: '1px solid #ffe0b2'
+        }}>
+          <span style={{ fontSize: '1.2rem' }}>⚠️</span> 
+          <div style={{ lineHeight: 1.4 }}>{t.supportedNote}</div>
         </div>
 
         <input 

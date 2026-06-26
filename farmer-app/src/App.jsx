@@ -152,7 +152,7 @@ function App() {
               </div>
               <div className={`nav-item ${currentScreen === 'explore' ? 'active' : ''}`} onClick={() => setCurrentScreen('explore')} style={{ cursor: 'pointer' }}>
                 <Compass size={24} />
-                <span>{language === 'hi' ? 'मंडी भाव' : 'Mandi'}</span>
+                <span>{language === 'hi' ? 'एक्सप्लोर' : 'Explore'}</span>
               </div>
               <div className="nav-item" style={{ cursor: 'pointer', opacity: 0.5 }}>
                 <User size={24} />

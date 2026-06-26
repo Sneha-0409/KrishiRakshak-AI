@@ -16,8 +16,8 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
     riceBlastDesc: isHindi ? '14 किसानों ने 3 किमी के दायरे में इसकी सूचना दी है • 2 घंटे पहले' : '14 farmers reported this in 3km radius • 2 hrs ago',
     quickActions: isHindi ? 'त्वरित कार्य' : 'Quick Actions',
     sowNow: isHindi ? 'अब क्या बोएं' : 'What to Sow Now',
-    kharifTips: isHindi ? 'खरीफ सीजन के सुझाव' : 'Kharif season tips',
-    mandiCheck: isHindi ? 'मंडी भाव' : 'Mandi Prices',
+    sowDesc: isHindi ? 'खरीफ सीजन के सुझाव' : 'Kharif season tips',
+    mandi: isHindi ? 'मंडी भाव' : 'Mandi Prices',
     marketRates: isHindi ? 'लाइव बाजार भाव' : 'Live market rates',
     fertCalc: isHindi ? 'उर्वरक कैलकुलेटर' : 'Fertilizer Calc',
     npkField: isHindi ? 'आपके खेत के लिए NPK' : 'NPK for your field',
@@ -63,7 +63,7 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
   const riceBlastTitle = isHindi ? `राइस ब्लास्ट अलर्ट — ${locationName}` : `Rice Blast Alert — ${locationName}`;
 
   return (
-    <div style={{ paddingBottom: '20px', background: 'var(--color-background)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ paddingBottom: '20px', background: 'var(--color-background)', flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
 
       {/* Dark Green Top Section */}
       <div style={{
@@ -258,7 +258,7 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '4px' }}>
 
           {/* What to Sow Now (Green) */}
-          <div
+          <div 
             onClick={() => onNavigate('sowing')}
             style={{ background: '#e8f5e9', borderRadius: '16px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}
           >
@@ -272,7 +272,7 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
           </div>
 
           {/* Mandi Prices (Yellow) */}
-          <div
+          <div 
             onClick={handleComingSoon}
             style={{ background: '#fff8e1', borderRadius: '16px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.02)', position: 'relative' }}
           >
@@ -282,7 +282,7 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
             </div>
             <div>
               <h4 style={{ margin: '0 0 2px 0', fontSize: '0.9rem', fontWeight: 700, color: '#e65100' }}>{t.mandi}</h4>
-              <p style={{ margin: 0, fontSize: '0.75rem', color: '#f57c00', fontWeight: 500 }}>{t.liveRates}</p>
+              <p style={{ margin: 0, fontSize: '0.75rem', color: '#f57c00', fontWeight: 500 }}>{t.marketRates}</p>
             </div>
           </div>
 

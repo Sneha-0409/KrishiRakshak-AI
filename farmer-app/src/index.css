@@ -81,13 +81,13 @@ button:active {
 .app-container {
   max-width: 600px;
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: var(--color-background); /* Straw color for inside the app */
   box-shadow: var(--shadow-xl);
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Header */
@@ -144,11 +144,29 @@ button:active {
 /* Main Content */
 .main-content {
   flex: 1;
+  min-height: 0; /* Critical for flex child scrolling */
   padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: calc(var(--spacing-xxl) * 2);
+}
+
+/* Custom Scrollbar to make it visible on Mac */
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.main-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.main-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Cards */
