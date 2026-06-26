@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import CameraCapture from './components/CameraCapture';
 import ResultsView from './components/ResultsView';
 import SplashScreen from './components/SplashScreen';
+import LoginPage from './components/LoginPage';
 import HomeDashboard from './components/HomeDashboard';
 import SowingGuide from './components/SowingGuide';
 import ExplorePage from './components/ExplorePage';
+import ProfilePage from './components/ProfilePage';
 import { Leaf, RefreshCcw, Home, Compass, User, ArrowLeft } from 'lucide-react';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState('splash'); // splash, home, scanner, results
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [currentScreen, setCurrentScreen] = useState('splash'); // splash, login, home, scanner, results
+  const [exploreTab, setExploreTab] = useState('mandi');
   const [language, setLanguage] = useState('en');
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -17,6 +22,11 @@ function App() {
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'hi' : 'en');
+  };
+
+  const handleNavigate = (screen, tab = null) => {
+    if (tab) setExploreTab(tab);
+    setCurrentScreen(screen);
   };
 
   const handleImageSelect = async (file) => {
@@ -67,12 +77,20 @@ function App() {
     <div className="app-container">
       
       {currentScreen === 'splash' && (
-        <SplashScreen onComplete={() => setCurrentScreen('home')} />
+        <SplashScreen onComplete={() => setCurrentScreen(isLoggedIn ? 'home' : 'login')} />
       )}
 
       {currentScreen !== 'splash' && (
         <>
-          {currentScreen !== 'home' && (
+          {currentScreen === 'login' && (
+            <LoginPage 
+              language={language} 
+              toggleLanguage={toggleLanguage} 
+              onLoginSuccess={(name) => { setUserName(name || (language === 'hi' ? 'किसान' : 'Farmer')); setIsLoggedIn(true); setCurrentScreen('home'); }} 
+            />
+          )}
+
+          {currentScreen !== 'home' && currentScreen !== 'login' && (
             <header className="app-header">
               <div className="header-left">
                 {(currentScreen === 'scanner' || currentScreen === 'results' || currentScreen === 'sowing' || currentScreen === 'explore') && (
@@ -92,7 +110,7 @@ function App() {
           )}
 
           {currentScreen === 'home' && (
-            <HomeDashboard language={language} onNavigate={setCurrentScreen} toggleLanguage={toggleLanguage} />
+            <HomeDashboard language={language} userName={userName} onNavigate={handleNavigate} toggleLanguage={toggleLanguage} />
           )}
 
           {currentScreen === 'sowing' && (
@@ -100,7 +118,16 @@ function App() {
           )}
 
           {currentScreen === 'explore' && (
-            <ExplorePage language={language} />
+            <ExplorePage language={language} initialTab={exploreTab} />
+          )}
+
+          {currentScreen === 'profile' && (
+            <ProfilePage 
+              language={language} 
+              userName={userName}
+              toggleLanguage={toggleLanguage} 
+              onLogout={() => { setIsLoggedIn(false); setUserName(''); setCurrentScreen('login'); }}
+            />
           )}
 
           {(currentScreen === 'scanner' || currentScreen === 'results') && (
@@ -144,17 +171,17 @@ function App() {
           )}
 
           {/* Bottom Navigation */}
-          {currentScreen !== 'results' && (
+          {currentScreen !== 'results' && currentScreen !== 'login' && (
             <nav className="bottom-nav">
               <div className={`nav-item ${currentScreen === 'home' ? 'active' : ''}`} onClick={goHome} style={{ cursor: 'pointer' }}>
                 <Home size={24} />
                 <span>{language === 'hi' ? 'होम' : 'Home'}</span>
               </div>
-              <div className={`nav-item ${currentScreen === 'explore' ? 'active' : ''}`} onClick={() => setCurrentScreen('explore')} style={{ cursor: 'pointer' }}>
+              <div className={`nav-item ${currentScreen === 'explore' ? 'active' : ''}`} onClick={() => handleNavigate('explore', 'mandi')} style={{ cursor: 'pointer' }}>
                 <Compass size={24} />
                 <span>{language === 'hi' ? 'एक्सप्लोर' : 'Explore'}</span>
               </div>
-              <div className="nav-item" style={{ cursor: 'pointer', opacity: 0.5 }}>
+              <div className={`nav-item ${currentScreen === 'profile' ? 'active' : ''}`} onClick={() => handleNavigate('profile')} style={{ cursor: 'pointer' }}>
                 <User size={24} />
                 <span>{language === 'hi' ? 'प्रोफ़ाइल' : 'Profile'}</span>
               </div>

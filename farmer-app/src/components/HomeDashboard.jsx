@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, Sun, Scan, Sprout, ChevronRight, FlaskConical, ClipboardList, TrendingUp } from 'lucide-react';
 
-export default function HomeDashboard({ language, onNavigate, toggleLanguage }) {
+export default function HomeDashboard({ language, userName, onNavigate, toggleLanguage }) {
   const isHindi = language === 'hi';
   const [locationName, setLocationName] = useState('Singrauli');
 
   const t = {
     greeting: isHindi ? 'सुप्रभात,' : 'Good morning,',
-    name: isHindi ? 'रमेश जी 👋' : 'Ramesh ji 👋',
+    name: userName ? `${userName} 👋` : (isHindi ? 'रमेश जी 👋' : 'Ramesh ji 👋'),
     alert: isHindi ? 'सिंगरौली के पास 1 रोग अलर्ट' : '1 disease alert near Singrauli',
     aiPowered: isHindi ? 'AI संचालित' : 'AI POWERED',
     scanCropTitle: isHindi ? 'फसल रोग तुरंत स्कैन करें' : 'Scan Crop Disease Instantly',
@@ -126,7 +126,10 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
           <h1 style={{ fontSize: '2.5rem', fontWeight: 800, margin: '0 0 12px 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
             {t.name}
           </h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem' }}>
+          <div 
+            onClick={() => onNavigate('explore', 'alerts')}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', cursor: 'pointer' }}
+          >
             <div style={{ width: '8px', height: '8px', background: '#fcd34d', borderRadius: '50%' }}></div>
             {alertText}
           </div>
@@ -212,7 +215,7 @@ export default function HomeDashboard({ language, onNavigate, toggleLanguage }) 
 
         {/* Alert Card */}
         <div
-          onClick={() => onNavigate('explore')}
+          onClick={() => onNavigate('explore', 'alerts')}
           style={{
             background: 'linear-gradient(135deg, #a52323 0%, #8b1c1c 100%)',
             borderRadius: '20px',

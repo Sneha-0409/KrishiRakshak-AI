@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, Search, RefreshCw, AlertCircle, CloudRain, Sun, Wind, MapPin, AlertTriangle, Info } from 'lucide-react';
 
-export default function ExplorePage({ language }) {
+export default function ExplorePage({ language, initialTab = 'mandi' }) {
   const isHindi = language === 'hi';
-  const [activeTab, setActiveTab] = useState('mandi'); // 'mandi' or 'alerts'
+  const [activeTab, setActiveTab] = useState(initialTab);
   
   // State for Mandi
   const [searchTerm, setSearchTerm] = useState('');
