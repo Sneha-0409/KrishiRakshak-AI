@@ -2,7 +2,7 @@ import os
 import shutil
 import uuid
 
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 
 from model.predict import predict_image
@@ -33,7 +33,7 @@ def home():
 
 
 @app.post("/predict")
-async def predict(file: UploadFile = File(...)):
+async def predict(file: UploadFile = File(...), language: str = Form("English")):
 
     extension = os.path.splitext(file.filename)[1]
 
@@ -58,7 +58,8 @@ async def predict(file: UploadFile = File(...)):
 
     # Gemini Recommendation
     recommendation = get_disease_information(
-        friendly_name
+        friendly_name,
+        language
     )
 
     return {

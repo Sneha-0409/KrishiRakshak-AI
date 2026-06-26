@@ -15,7 +15,7 @@ client = genai.Client(api_key=API_KEY)
 
 # Gemini Function
 
-def get_disease_information(disease_name: str):
+def get_disease_information(disease_name: str, language: str = "English"):
 
     prompt = f"""
 You are an expert agricultural scientist helping Indian farmers.
@@ -35,6 +35,7 @@ IMPORTANT RULES:
 5. Do NOT write any explanation outside JSON.
 6. Every list item must be plain text.
 7. Keep answers concise and practical.
+8. ALL of the text values in the JSON (description, symptoms, treatments, preventions) MUST be written in {language}. The JSON keys must remain in English.
 
 Return EXACTLY this JSON format:
 
