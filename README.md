@@ -1,4 +1,4 @@
-# 🌾 KrishiRakshak AI -  An AI-Powered Crop & Livestock Disease Diagnosis and Reporting Platform
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/9fe34571-c18a-40af-b08a-f0a7874f054a" /># 🌾 KrishiRakshak AI -  An AI-Powered Crop & Livestock Disease Diagnosis and Reporting Platform
 
 KrishiRakshak AI is a smart agricultural healthcare platform that enables farmers to detect crop diseases using Artificial Intelligence, Computer Vision, and Generative AI. Farmers can capture images of affected crops, describe symptoms via voice, and receive instant disease predictions along with preventive measures, organic, and chemical treatment recommendations.
 
@@ -47,13 +47,13 @@ Designed specifically for rural usability, the app features a Progressive Web Ap
 
 ```mermaid
 graph TD
-    A[Farmer Mobile App / PWA] -->|1. Image or Voice Upload| B(FastAPI Backend)
-    B -->|2. Image Inference| C{TensorFlow (MobileNetV2) Disease Detection Model}
+    A["Farmer Mobile App / PWA"] -->|1. Image or Voice Upload| B("FastAPI Backend")
+    B -->|2. Image Inference| C{"TensorFlow (MobileNetV2) Disease Detection Model"}
     C -->|3. Disease Class| B
-    B -->|4. Disease Name + Language| D{Gemini 2.5 Flash (Treatment Recommendation Engine)}
+    B -->|4. Disease Name + Language| D{"Gemini 2.5 Flash (Treatment Recommendation Engine)"}
     D -->|5. Treatments & Advice| B
-    B -->|6. Prediction + AI Recommendation (JSON)| A
-    A -->|7. Text-to-Speech Output| E[Farmer]
+    B -->|6. Prediction and AI Recommendation JSON| A
+    A -->|7. Text-to-Speech Output| E["Farmer"]
 ```
 
 ---
