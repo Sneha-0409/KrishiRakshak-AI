@@ -93,6 +93,17 @@ graph TD
 - **Sustainable Farming**: Provide actionable organic treatment options alongside traditional chemical methods.
 
 ---
+## Result
+
+**📈 Model Performance**
+- **Classes:** 6 Plant Diseases (Tomato & Potato variants)
+- **Validation Accuracy:** ~95%
+- **Architecture:** TensorFlow/Keras CNN (MobileNetV2)
+- **Inference Speed:** Real-time (optimized for mobile/web)
+- **AI Advisory:** Powered dynamically by Gemini 2.5 Flash
+
+---
+
 ## UI Preview
 1. Login Page
 <img width="602" height="719" alt="Screenshot 2026-06-27 at 03 29 16" src="https://github.com/user-attachments/assets/ccf503fa-ba50-4eba-a6d5-8fcc154ff25c" />
