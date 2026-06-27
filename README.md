@@ -1,6 +1,6 @@
 ![Python](https://img.shields.io/badge/Python-3.11-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-Live-green) ![TensorFlow](https://img.shields.io/badge/TensorFlow-orange) ![Gemini](https://img.shields.io/badge/Google-Gemini-blue) ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 🌾 KrishiRakshak AI — AI-Powered Smart Farming Assistant
+## 🌾 KrishiRakshak AI - AI-Powered Smart Farming Assistant
 
 KrishiRakshak AI is a smart agricultural healthcare platform that enables farmers to detect crop diseases using Artificial Intelligence, Computer Vision, and Generative AI. Farmers can capture images of affected crops, describe symptoms via voice, and receive instant disease predictions along with preventive measures, organic, and chemical treatment recommendations.
 
