@@ -7,7 +7,7 @@ KrishiRakshak AI is a smart agricultural healthcare platform that enables farmer
 Designed specifically for rural usability, the app features a Progressive Web App (PWA) architecture for mobile installation, full bilingual support (English and Hindi), and Text-to-Speech capabilities so advice can be listened to directly.
 
 ---
-## 🌐 Live Demo
+## Live Demo
 
 App link: 
 https://krishi-rakshak-ai-9l41.vercel.app/
@@ -17,7 +17,7 @@ https://krishi-rakshak-ai-9141.vercel.app/
 
 ---
 
-## 🚀 Deployed Features
+## Deployed Features
 
 - **🌱 AI-Powered Crop Disease Detection**: Snap a photo or upload an image to instantly classify plant diseases using a custom-trained TensorFlow model.
 - **🤖 Gemini AI Advisory**: Generates highly personalized, context-aware advice for the detected disease (organic treatments, chemical treatments, and prevention).
@@ -53,7 +53,7 @@ https://krishi-rakshak-ai-9141.vercel.app/
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 graph TD
@@ -85,7 +85,7 @@ graph TD
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 - **Empower Farmers**: Bridge the gap between rural farmers and expert agricultural knowledge.
 - **Early Detection**: Enable immediate detection of crop diseases directly through smartphones.
