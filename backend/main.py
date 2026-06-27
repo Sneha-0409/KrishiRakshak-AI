@@ -56,10 +56,13 @@ async def predict(file: UploadFile = File(...), language: str = Form("English"))
         .replace("_", " ")
     )
 
+    lang_map = {"hi": "Hindi", "en": "English"}
+    full_language = lang_map.get(language, "English")
+
     # Gemini Recommendation
     recommendation = get_disease_information(
         friendly_name,
-        language
+        full_language
     )
 
     return {
