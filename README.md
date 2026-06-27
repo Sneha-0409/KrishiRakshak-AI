@@ -1,4 +1,4 @@
-<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/9fe34571-c18a-40af-b08a-f0a7874f054a" /># 🌾 KrishiRakshak AI -  An AI-Powered Crop & Livestock Disease Diagnosis and Reporting Platform
+## 🌾 KrishiRakshak AI -  An AI-Powered Crop & Livestock Disease Diagnosis and Reporting Platform
 
 KrishiRakshak AI is a smart agricultural healthcare platform that enables farmers to detect crop diseases using Artificial Intelligence, Computer Vision, and Generative AI. Farmers can capture images of affected crops, describe symptoms via voice, and receive instant disease predictions along with preventive measures, organic, and chemical treatment recommendations.
 
